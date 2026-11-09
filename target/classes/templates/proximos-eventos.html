@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Próximos Eventos</title>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Próximos Eventos Gamer</h1>
+    </header>
+
+    <main>
+
+        <a href="/home">
+            Volver al Inicio
+        </a>
+
+        <hr>
+
+        <h2>Buscar Eventos</h2>
+
+        <input
+                type="text"
+                id="busqueda"
+                placeholder="Buscar por nombre...">
+
+        <br><br>
+
+        <select id="filtroCategoria">
+
+            <option value="">
+                Todas las categorías
+            </option>
+
+            <option value="Pokémon TCG">
+                Pokémon TCG
+            </option>
+
+            <option value="League of Legends">
+                League of Legends
+            </option>
+
+            <option value="Valorant">
+                Valorant
+            </option>
+
+            <option value="Minecraft">
+                Minecraft
+            </option>
+
+            <option value="Smash Bros">
+                Smash Bros
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <select id="filtroModalidad">
+
+            <option value="">
+                Todas las modalidades
+            </option>
+
+            <option value="Presencial">
+                Presencial
+            </option>
+
+            <option value="Online">
+                Online
+            </option>
+
+        </select>
+
+        <hr>
+
+        <h2>Próximos Eventos</h2>
+
+        <div id="lista-eventos">
+
+            <div th:each="evento : ${eventos}"
+                 class="card evento-card">
+
+                <h3 th:text="${evento.nombre}">
+                    Nombre Evento
+                </h3>
+
+                <p>
+                    <strong>Categoría:</strong>
+                    <span th:text="${evento.categoria}"></span>
+                </p>
+
+                <p>
+                    <strong>Modalidad:</strong>
+                    <span th:text="${evento.modalidad}"></span>
+                </p>
+
+                <p>
+                    <strong>Fecha:</strong>
+                    <span class="fecha-evento"
+                          th:text="${evento.fecha}">
+                    </span>
+                </p>
+
+                <p>
+                    <strong>Ubicación:</strong>
+                    <span th:text="${evento.ubicacion}"></span>
+                </p>
+
+                <a th:href="@{/evento-detalle/{id}(id=${evento.id})}">
+                    Ver Detalle
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        const busqueda =
+            document.getElementById(
+                "busqueda");
+
+        const categoria =
+            document.getElementById(
+                "filtroCategoria");
+
+        const modalidad =
+            document.getElementById(
+                "filtroModalidad");
+
+        function filtrarEventos() {
+
+            const cards =
+                document.querySelectorAll(
+                    ".evento-card");
+
+            const hoy =
+                new Date();
+
+            hoy.setHours(
+                0, 0, 0, 0);
+
+            cards.forEach(card => {
+
+                const texto =
+                    card.innerText.toLowerCase();
+
+                const fechaTexto =
+                    card.querySelector(
+                        ".fecha-evento")
+                        .innerText.trim();
+
+                const fechaEvento =
+                    new Date(
+                        fechaTexto);
+
+                const criterioBusqueda =
+                    busqueda.value.toLowerCase();
+
+                const criterioCategoria =
+                    categoria.value.toLowerCase();
+
+                const criterioModalidad =
+                    modalidad.value.toLowerCase();
+
+                const cumpleBusqueda =
+                    texto.includes(
+                        criterioBusqueda);
+
+                const cumpleCategoria =
+                    criterioCategoria === ""
+                    || texto.includes(
+                        criterioCategoria);
+
+                const cumpleModalidad =
+                    criterioModalidad === ""
+                    || texto.includes(
+                        criterioModalidad);
+
+                const esEventoFuturo =
+                    fechaEvento >= hoy;
+
+                card.style.display =
+
+                    cumpleBusqueda
+                    && cumpleCategoria
+                    && cumpleModalidad
+                    && esEventoFuturo
+
+                    ? "block"
+                    : "none";
+
+            });
+
+        }
+
+        busqueda.addEventListener(
+            "input",
+            filtrarEventos);
+
+        categoria.addEventListener(
+            "change",
+            filtrarEventos);
+
+        modalidad.addEventListener(
+            "change",
+            filtrarEventos);
+
+        filtrarEventos();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos Gamer</title>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Eventos Gamer</h1>
+    </header>
+
+    <main>
+
+        <a href="/home">
+            Volver al Inicio
+        </a>
+
+        <h2>Buscar Eventos</h2>
+
+        <form>
+
+            <label>Nombre del Evento</label>
+            <input type="text">
+
+            <label>Categoría / Juego</label>
+            <select>
+                <option>Pokémon TCG</option>
+                <option>League of Legends</option>
+                <option>Valorant</option>
+                <option>Minecraft</option>
+            </select>
+
+            <label>Ubicación</label>
+            <input type="text">
+
+            <label>Modalidad</label>
+            <select>
+                <option>Presencial</option>
+                <option>Online</option>
+            </select>
+
+        </form>
+
+        <hr>
+
+        <h2>Eventos Disponibles</h2>
+
+        <div th:if="${#lists.isEmpty(eventos)}">
+
+            <p>
+                No existen eventos registrados.
+            </p>
+
+        </div>
+
+        <div class="card"
+             th:each="evento : ${eventos}">
+
+            <h3 th:text="${evento.nombre}">
+                Nombre Evento
+            </h3>
+
+            <p>
+                Categoría:
+                <span th:text="${evento.categoria}">
+                    Categoria
+                </span>
+            </p>
+
+            <p>
+                Ubicación:
+                <span th:text="${evento.ubicacion}">
+                    Ubicacion
+                </span>
+            </p>
+
+            <p>
+                Modalidad:
+                <span th:text="${evento.modalidad}">
+                    Modalidad
+                </span>
+            </p>
+
+            <a th:href="@{/evento-detalle/{id}(id=${evento.id})}">
+                Ver Detalle
+            </a>
+
+            <div sec:authorize="hasRole('ADMIN')">
+
+                <br><br>
+
+                <a th:href="@{/eliminar-evento/{id}(id=${evento.id})}">
+                    Eliminar Evento
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

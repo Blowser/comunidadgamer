@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle Evento</title>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+
+<body>
+
+    <h1 th:text="${evento.nombre}">
+        Nombre Evento
+    </h1>
+
+    <main>
+
+        <a href="/eventos">
+            ← Volver a Eventos
+        </a>
+
+        <hr>
+
+        <section>
+
+            <h2>Información General</h2>
+
+            <p th:text="${evento.descripcion}">
+                Descripción del evento
+            </p>
+
+
+            <span th:text="${evento.fecha}">
+                Fecha
+            </span>
+
+            <p>
+                <strong>Hora:</strong>
+                09:00 hrs
+            </p>
+
+            <span th:text="${evento.ubicacion}">
+                Ubicación
+            </span>
+
+            <span th:text="${evento.modalidad}">
+                Modalidad
+            </span>
+            
+            <span th:text="${evento.organizador}">
+                Organizador
+            </span>
+
+        </section>
+
+        <section>
+
+            <h2>Cronograma</h2>
+
+            <ul>
+                <li>09:00 - Registro de participantes</li>
+                <li>10:00 - Inicio de rondas suizas</li>
+                <li>13:00 - Pausa almuerzo</li>
+                <li>14:00 - Eliminatorias</li>
+                <li>18:00 - Premiación</li>
+            </ul>
+
+        </section>
+
+        <section>
+
+            <h2>Agenda de Actividades</h2>
+
+            <ul>
+                <li>Torneo principal Pokémon TCG</li>
+                <li>Zona de intercambio de cartas</li>
+                <li>Exhibición de colecciones</li>
+                <li>Sorteos y concursos</li>
+            </ul>
+
+        </section>
+
+        <section>
+
+            <h2>Requisitos de Participación</h2>
+
+            <ul>
+                <li>Registro previo obligatorio.</li>
+                <li>Llevar mazo reglamentario.</li>
+                <li>Presentar identificación al ingreso.</li>
+                <li>Respetar reglamento oficial del torneo.</li>
+            </ul>
+
+        </section>
+
+        <section>
+
+            <h2>Servicios Disponibles</h2>
+
+            <ul>
+                <li>Estacionamiento</li>
+                <li>Zona de comidas</li>
+                <li>Locomoción cercana</li>
+                <li>Áreas de descanso</li>
+            </ul>
+
+        </section>
+
+        <section>
+
+            <h2>Patrocinadores</h2>
+
+            <ul>
+                <li>Logitech G</li>
+                <li>Razer</li>
+                <li>HyperX</li>
+                <li>ASUS ROG</li>
+            </ul>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

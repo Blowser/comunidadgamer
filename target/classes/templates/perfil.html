@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil Gamer</title>
+    <link rel="stylesheet" type="text/css" href="/estilo.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Perfil de Usuario</h1>
+    </header>
+
+    <main>
+
+        <h2>Configuración del Perfil Gamer</h2>
+
+        <form>
+
+            <div>
+                <label for="username">Nombre de Usuario</label><br>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value="MegaManectric">
+            </div>
+
+            <br>
+
+            <div>
+                <label for="avatar">Avatar</label><br>
+                <select id="avatar" name="avatar">
+                    <option>Entrenador Pokémon</option>
+                    <option>Mago Arcano</option>
+                    <option>Guerrero Legendario</option>
+                    <option>Piloto Espacial</option>
+                    <option>Samurái Gamer</option>
+                </select>
+            </div>
+
+            <br>
+
+            <div>
+                <label>Juegos de Interés</label><br>
+
+                <input type="checkbox" id="pokemon">
+                <label for="pokemon">Pokémon TCG</label><br>
+
+                <input type="checkbox" id="lol">
+                <label for="lol">League of Legends</label><br>
+
+                <input type="checkbox" id="valorant">
+                <label for="valorant">Valorant</label><br>
+
+                <input type="checkbox" id="minecraft">
+                <label for="minecraft">Minecraft</label><br>
+
+                <input type="checkbox" id="fortnite">
+                <label for="fortnite">Fortnite</label>
+            </div>
+
+            <br>
+
+            <div>
+                <label>Opciones de Notificación</label><br>
+
+                <input type="checkbox" id="correo">
+                <label for="correo">Recibir eventos por correo</label><br>
+
+                <input type="checkbox" id="torneos">
+                <label for="torneos">Avisos de torneos</label><br>
+
+                <input type="checkbox" id="promociones">
+                <label for="promociones">Promociones y descuentos</label>
+            </div>
+
+            <br>
+
+            <button type="submit">
+                Guardar Perfil
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="/home">Volver al Inicio</a>
+
+    </main>
+
+</body>
+
+</html>

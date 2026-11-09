@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Comunidad Gamer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/estilo.css">
+</head>
+
+<body>
+
+    <header>
+        <h1 th:text="|Comunidad Gamer - ${name}!|"></h1>
+    </header>
+
+    <!-- Usuario autenticado -->
+    <div id="usuario-logeado" sec:authorize="isAuthenticated()">
+
+        <h2 th:inline="text">
+            Hola <span th:remove="tag" sec:authentication="name"></span>!
+        </h2>
+
+        <a href="/perfil">
+            Ver Perfil
+        </a>
+
+        <br><br>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">
+                Cerrar Sesión
+            </button>
+        </form>
+
+    </div>
+
+    <!-- Usuario NO autenticado -->
+    <div id="usuario-invitado" sec:authorize="!isAuthenticated()">
+
+        <a href="/login">
+            Iniciar Sesión
+        </a>
+
+    </div>
+
+    <hr>
+
+    <!-- Panel administrador -->
+    <div id="panel-admin" sec:authorize="hasRole('ADMIN')">
+
+        <h2>Panel Administrador</h2>
+
+        <a href="/crear-evento">
+            Crear Evento
+        </a>
+
+    </div>
+
+    <hr>
+
+    <!-- Navegación principal -->
+    <div id="navegacion">
+
+        <h2>Navegación</h2>
+
+        <ul>
+            <li>
+                <a href="/eventos">
+                    Ver Eventos
+                </a>
+            </li>
+
+            <li>
+                <a href="/proximos-eventos">
+                    Próximos Eventos
+                </a>
+            </li>
+
+            <li sec:authorize="isAuthenticated()">
+                <a href="/perfil">
+                    Mi Perfil
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+    <hr>
+
+    <!-- Próximos eventos -->
+    <div id="eventos-destacados">
+
+        <h2>Eventos Destacados</h2>
+
+        <div class="card">
+            Pokémon TCG Regional Valparaíso
+        </div>
+
+        <div class="card">
+            League of Legends Clash Chile
+        </div>
+
+        <div class="card">
+            Valorant Open Cup
+        </div>
+
+    </div>
+
+    <hr>
+
+    <!-- Publicidad -->
+    <div id="patrocinadores">
+
+        <h2>Patrocinadores</h2>
+
+        <ul>
+            <li>Razer</li>
+            <li>HyperX</li>
+            <li>Logitech G</li>
+            <li>ASUS ROG</li>
+        </ul>
+
+    </div>
+
+</body>
+
+</html>
