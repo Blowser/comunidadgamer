@@ -11,3 +11,19 @@ public class ComunidadgamerApplication {
 	}
 
 }
+
+/*
+ * Flujo de autenticación:
+ *
+ * Login
+ * ↓
+ * Spring Security
+ * ↓
+ * JWT
+ * ↓
+ * Cookie
+ * ↓
+ * JwtAuthorizationFilter
+ * ↓
+ * Acceso a rutas protegidas
+ */
