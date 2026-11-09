@@ -42,16 +42,16 @@ public class WebSecurityConfig {
                 loginSuccessHandler;
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(
-            HttpSecurity http)
-            throws Exception {
+        @Bean
+        public SecurityFilterChain securityFilterChain(
+                HttpSecurity http)
+                throws Exception {
 
         http
 
-            .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.disable())
 
-            .authorizeHttpRequests(authz -> authz
+                .authorizeHttpRequests(authz -> authz
 
                 .requestMatchers(
                         "/",
@@ -67,7 +67,13 @@ public class WebSecurityConfig {
                 .anyRequest()
                 .authenticated())
 
-            .formLogin(form -> form
+                .headers(headers -> headers
+                .contentSecurityPolicy(csp -> csp
+                        .policyDirectives(
+                        "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"))
+                )
+
+                .formLogin(form -> form
 
                 .loginPage(
                         Constantes.LOGIN_URL)
@@ -77,7 +83,7 @@ public class WebSecurityConfig {
 
                 .permitAll())
 
-            .logout(logout -> logout
+                .logout(logout -> logout
 
                 .logoutSuccessUrl(
                         "/home")
@@ -89,7 +95,7 @@ public class WebSecurityConfig {
                 UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }
+        }
 
     @Bean
     @Description("Usuarios almacenados en memoria para pruebas")
