@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import cl.duoc.comunidadgamer.security.Constantes;
@@ -18,9 +19,12 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-    private final Key key =
-            Keys.hmacShaKeyFor(
-                    Constantes.SUPER_SECRET_KEY.getBytes());
+    @Value("${jwt.secret}")
+    private String secret;
+
+    private Key getSigningKey() {
+        return Keys.hmacShaKeyFor(secret.getBytes());
+    }
 
     public String generateToken(
             String username,
@@ -48,7 +52,7 @@ public class JwtService {
                                         + Constantes.TOKEN_EXPIRATION_TIME))
 
                 .signWith(
-                        key,
+                        getSigningKey(),
                         SignatureAlgorithm.HS256)
 
                 .compact();
@@ -65,7 +69,7 @@ public class JwtService {
             String token) {
 
         return Jwts.parserBuilder()
-                .setSigningKey(key)
+                .setSigningKey(getSigningKey())
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
