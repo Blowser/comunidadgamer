@@ -5,6 +5,7 @@ import java.security.Key;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,6 +24,13 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
+    @Value("${jwt.secret}")
+    private String secret;
+
+    private Key getSigningKey() {
+        return Keys.hmacShaKeyFor(secret.getBytes());
+    }
+
     private Claims setSigningKey(
             HttpServletRequest request) {
 
@@ -33,11 +41,8 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                         Constantes.TOKEN_BEARER_PREFIX,
                         "");
 
-        Key key = Keys.hmacShaKeyFor(
-                Constantes.SUPER_SECRET_KEY.getBytes());
-
         return Jwts.parserBuilder()
-                .setSigningKey(key)
+                .setSigningKey(getSigningKey())
                 .build()
                 .parseClaimsJws(jwtToken)
                 .getBody();
