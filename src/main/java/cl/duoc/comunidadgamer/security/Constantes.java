@@ -20,8 +20,7 @@ public final class Constantes {
     public static final String ISSUER_INFO =
             "https://www.comunidadgamer.cl/";
 
-    public static final String SUPER_SECRET_KEY =
-            "ComunidadGamerSuperSecretKeyParaJWT2026";
+
 
     public static final long TOKEN_EXPIRATION_TIME =
             3600000;
