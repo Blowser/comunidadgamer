@@ -1,0 +1,14 @@
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\ComunidadgamerApplication.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\controller\AuthController.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\controller\EventoController.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\controller\HomeController.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\controller\SecuredController.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\entity\Evento.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\entity\LoginRequest.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\entity\LoginResponse.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\security\Constantes.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\security\JwtAuthorizationFilter.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\security\LoginSuccessHandler.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\service\EventoService.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\service\JwtService.java
+C:\Users\corte\OneDrive\Escritorio\seguridadycalidad-comunidadgamer\comunidadgamer\src\main\java\cl\duoc\comunidadgamer\WebSecurityConfig.java
