@@ -1,0 +1,14 @@
+cl\duoc\comunidadgamer\entity\LoginResponse.class
+cl\duoc\comunidadgamer\security\Constantes.class
+cl\duoc\comunidadgamer\ComunidadgamerApplication.class
+cl\duoc\comunidadgamer\controller\AuthController.class
+cl\duoc\comunidadgamer\entity\LoginRequest.class
+cl\duoc\comunidadgamer\WebSecurityConfig.class
+cl\duoc\comunidadgamer\security\LoginSuccessHandler.class
+cl\duoc\comunidadgamer\service\EventoService.class
+cl\duoc\comunidadgamer\controller\SecuredController.class
+cl\duoc\comunidadgamer\entity\Evento.class
+cl\duoc\comunidadgamer\controller\EventoController.class
+cl\duoc\comunidadgamer\controller\HomeController.class
+cl\duoc\comunidadgamer\service\JwtService.class
+cl\duoc\comunidadgamer\security\JwtAuthorizationFilter.class
